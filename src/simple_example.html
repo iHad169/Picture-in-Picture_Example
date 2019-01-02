@@ -1,0 +1,41 @@
+<!--
+  ~ iHad169 is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ iHad169 is distributed in the hope that it will be useful,
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with iHad169.  If not, see <https://www.gnu.org/licenses/>.
+  -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+<video id="video" controls playsinline
+       src="https://storage.googleapis.com/media-session/caminandes/short.mp4"
+       poster="https://storage.googleapis.com/media-session/caminandes/artwork-512.png"></video>
+<button id="pictureInPictureButton">Toggle Picture-in-Picture</button>
+<script>
+  pictureInPictureButton.addEventListener("click", function(event) {
+    pictureInPictureButton.disabled = true;
+    try {
+      if (video !== document.pictureInPictureElement)
+        video.requestPictureInPicture();
+      else
+        document.exitPictureInPicture();
+    } catch(error) {
+      console.log(error);
+    } finally {
+      pictureInPictureButton.disabled = false;
+    }
+  });
+</script>
+</body>
+</html>
